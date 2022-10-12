@@ -6,6 +6,9 @@ on:
       - main
   pull_request:
 
+permissions:
+  contents: read # to fetch code (actions/checkout)
+
 jobs:
   unit-test:
     runs-on: ${{ matrix.os }}
@@ -67,13 +70,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'pnpm'
 
       - name: Install deps
         run: pnpm install
 
-      - name: Run E2E
+      - name: Build docs
         run: pnpm run docs:build:ci
+
+      - name: Run e2e
+        run: pnpm run docs:test:e2e:run
 
   lint:
     runs-on: ubuntu-latest
@@ -194,7 +199,7 @@ jobs:
         run: pnpm vitest run --coverage
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3.1.0
+        uses: codecov/codecov-action@v3.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true

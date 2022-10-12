@@ -8,28 +8,39 @@ export type CompanyDefinitions = LocaleEntry<{
    * Business/products related adjectives.
    */
   bs_adjective: string[];
+
   /**
    * Business/products related nouns.
    */
   bs_noun: string[];
+
   /**
    * Business/products related verbs.
    */
   bs_verb: string[];
+
   /**
-   * Catch phrase adjectives.
+   * Catchphrase adjectives.
    */
   adjective: string[];
+
   /**
-   * Catch phrase adjectives.
+   * Catchphrase adjectives.
    */
   descriptor: string[];
+
   /**
-   * Catch phrase adjectives.
+   * A list of patterns used to generate company names.
+   */
+  name_patterns: string[];
+
+  /**
+   * Catchphrase adjectives.
    */
   noun: string[];
+
   /**
-   * Company suffixes
+   * Company suffixes.
    */
   suffix: string[];
 }>;
